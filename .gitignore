@@ -31,3 +31,6 @@ replay_pid*
 
 # Spring Boot
 out/
+
+# Maven build output
+target/
