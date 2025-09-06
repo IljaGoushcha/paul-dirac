@@ -28,3 +28,6 @@ In terminal
 export ACTUATOR_NAME=something1
 export ACTUATOR_SYKRET=something2
 mvn clean package
+and then run wit
+ACTUATOR_NAME=Ilja ACTUATOR_SYKRET=admin123 java -jar ./target/pauldirac-0.0.1-SNAPSHOT.jar
+
