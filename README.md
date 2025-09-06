@@ -27,7 +27,9 @@ ACTUATOR_NAME=something1;ACTUATOR_SYKRET=something2
 In terminal
 export ACTUATOR_NAME=something1
 export ACTUATOR_SYKRET=something2
+note here something1 and something2 do not really matter, since you will be passing those values to the .jar file explicitly when running it. 
+
 mvn clean package
 and then run wit
-ACTUATOR_NAME=Ilja ACTUATOR_SYKRET=admin123 java -jar ./target/pauldirac-0.0.1-SNAPSHOT.jar
+ACTUATOR_NAME=something1 ACTUATOR_SYKRET=something2 java -jar ./target/pauldirac-0.0.1-SNAPSHOT.jar
 
