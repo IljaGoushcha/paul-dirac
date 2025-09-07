@@ -33,7 +33,7 @@ mvn clean package
 and then run with a command
 ACTUATOR_NAME=something1 ACTUATOR_SYKRET=something2 java -jar ./target/pauldirac-0.0.1-SNAPSHOT.jar
 
-## With Mavne wrapper (mvnw)
+## With Maven wrapper (mvnw)
 ./mvnw package
 ACTUATOR_NAME=something1 ACTUATOR_SYKRET=something2 java -jar ./target/pauldirac-0.0.1-SNAPSHOT.jar
 
