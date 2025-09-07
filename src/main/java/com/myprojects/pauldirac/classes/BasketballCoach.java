@@ -1,0 +1,12 @@
+package com.myprojects.pauldirac.classes;
+
+import com.myprojects.pauldirac.interfaces.Coach;
+import org.springframework.stereotype.Component;
+
+@Component
+public class BasketballCoach implements Coach {
+    @Override
+    public String getDailyWorkout() {
+        return "Practice to improve three-point shooting.";
+    }
+}

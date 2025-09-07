@@ -1,4 +1,4 @@
-package com.myprojects.pauldirac.controller;
+package com.myprojects.pauldirac.controllers;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
