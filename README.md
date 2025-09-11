@@ -37,3 +37,9 @@ ACTUATOR_NAME=something1 ACTUATOR_SYKRET=something2 java -jar ./target/pauldirac
 ./mvnw package
 ACTUATOR_NAME=something1 ACTUATOR_SYKRET=something2 java -jar ./target/pauldirac-0.0.1-SNAPSHOT.jar
 
+## Connect to datasource
+In config, set the following env variables:
+DATASOURCE_NAME=something3
+DATASOURCE_SYKRET=something4
+DATASOURCE_DB_NAME=something5
+These needed to be added to the 'mvn clean package' and when running .jar file as well.
