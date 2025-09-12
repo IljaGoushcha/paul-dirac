@@ -13,4 +13,10 @@ public interface StudentDAO {
     List<Student> findAll();
 
     List<Student> findByLastName(String lastName);
+
+    int updateAllLastNames(String lastName);
+
+    Student updateLastNameById(int id, String lastName);
+
+    void update(Student student);
 }

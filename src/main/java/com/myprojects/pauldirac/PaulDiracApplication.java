@@ -44,6 +44,14 @@ public class PaulDiracApplication {
 			for (Student student : allGoushchaStudents) {
 				System.out.println(student.toString());
 			}
+
+			// Change all last names to Bradley
+			int numberOfUpdatedRecords = setLastNameForAllStudents(studentDAO,"Bradley");
+			System.out.println("Number of entries updated to last name Bradley: " + numberOfUpdatedRecords);
+
+			// Change user with id 155 last name to MacFarlane
+			Student updatedStudent = updateStudentLastName(studentDAO,158, "MacFarlane");
+			System.out.println("Updated student: " + updatedStudent.toString());
 		};
 	}
 
@@ -75,6 +83,15 @@ public class PaulDiracApplication {
 
 	private List<Student> queryForStudentsWithLastName(StudentDAO studentDAO, String lastName) {
 		return studentDAO.findByLastName(lastName);
+	}
+
+	private int setLastNameForAllStudents(StudentDAO studentDAO, String lastName) {
+		return studentDAO.updateAllLastNames(lastName);
+	}
+
+	private Student updateStudentLastName(StudentDAO studentDAO, int id, String lastName) {
+		Student updatedStudent = studentDAO.updateLastNameById(id, lastName);
+		return updatedStudent;
 	}
 
 }

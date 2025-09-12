@@ -2,6 +2,7 @@ package com.myprojects.pauldirac.dao;
 
 import com.myprojects.pauldirac.entity.Student;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -42,6 +43,31 @@ public class StudentDAOImpl implements StudentDAO {
         TypedQuery<Student> myQuery = entityManager.createQuery("FROM Student WHERE lastName=:theData", Student.class);
         myQuery.setParameter("theData", lastName);
         return myQuery.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public int updateAllLastNames(String lastName) {
+        Query myQuery = entityManager.createQuery("UPDATE Student SET lastName=:theData");
+        myQuery.setParameter("theData", lastName);
+        int numberOfUpdatedRows = myQuery.executeUpdate();
+        return numberOfUpdatedRows;
+    }
+
+    @Override
+    @Transactional
+    public Student updateLastNameById(int id, String lastName) {
+        Student myStudent = entityManager.find(Student.class, id);
+        myStudent.setLastName(lastName);
+        if (myStudent != null) {
+            entityManager.merge(myStudent);
+        }
+        return myStudent;
+    }
+
+    @Override
+    public void update(Student student) {
+
     }
 
 }
