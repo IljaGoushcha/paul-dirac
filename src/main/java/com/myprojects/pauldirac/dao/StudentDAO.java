@@ -18,5 +18,12 @@ public interface StudentDAO {
 
     Student updateLastNameById(int id, String lastName);
 
-    void update(Student student);
+    Student update(Student student);
+
+    void deleteStudent(int id);
+
+    // this specificity might be better outsourced to main() method
+    int deleteAllStudentsWithLastName(String lastName);
+
+    // Better to have delete(id) and deleteAll()
 }

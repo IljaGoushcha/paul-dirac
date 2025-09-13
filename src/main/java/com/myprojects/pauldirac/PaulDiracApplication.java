@@ -29,10 +29,6 @@ public class PaulDiracApplication {
 			createStudent(studentDAO);
 			createMultipleStudents(studentDAO);
 
-			// Fetch ALL Students
-			Student result = findStudent(studentDAO, 100);
-			if (result != null) { System.out.println(result.toString()); }
-
 			// Finding all students
 			List<Student> allStudentsInDatabase = queryForStudents(studentDAO);
 			for (Student student : allStudentsInDatabase) {
@@ -52,6 +48,26 @@ public class PaulDiracApplication {
 			// Change user with id 155 last name to MacFarlane
 			Student updatedStudent = updateStudentLastName(studentDAO,158, "MacFarlane");
 			System.out.println("Updated student: " + updatedStudent.toString());
+
+			// Fetch students by ID
+			Student result = findStudent(studentDAO, 155);
+			if (result != null) {
+				System.out.println("***** Found the following student with id: 100 *****");
+				System.out.println(result.toString());
+				System.out.println("***** This is how update should look un DB *****");
+				result.setFirstName("Hang");
+				result.setLastName("Pham");
+				result.setEmail("hang.pham@gmail.com.");
+				System.out.println(result.toString());
+				updateStudent(studentDAO, result);
+			}
+
+			// Delete student with id=160
+			deleteStudentByStudentID(studentDAO, 160);
+
+			// Delete all Bradleys
+			int numberOfRowsDeleted = deleteAllStudentsWithLastName(studentDAO, "Bradley");
+			System.out.println("Deleted " + numberOfRowsDeleted + " rows.");
 		};
 	}
 
@@ -92,6 +108,20 @@ public class PaulDiracApplication {
 	private Student updateStudentLastName(StudentDAO studentDAO, int id, String lastName) {
 		Student updatedStudent = studentDAO.updateLastNameById(id, lastName);
 		return updatedStudent;
+	}
+
+	private Student updateStudent(StudentDAO studentDAO, Student student) {
+		Student updatedStudent = studentDAO.update(student);
+		return updatedStudent;
+	}
+
+	private void deleteStudentByStudentID(StudentDAO studentDAO, int id) {
+		studentDAO.deleteStudent(id);
+	}
+
+	private int deleteAllStudentsWithLastName(StudentDAO studentDAO, String lastName) {
+		int result = studentDAO.deleteAllStudentsWithLastName(lastName);
+		return result;
 	}
 
 }
