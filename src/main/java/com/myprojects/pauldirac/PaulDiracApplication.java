@@ -47,10 +47,12 @@ public class PaulDiracApplication {
 
 			// Change user with id 155 last name to MacFarlane
 			Student updatedStudent = updateStudentLastName(studentDAO,158, "MacFarlane");
-			System.out.println("Updated student: " + updatedStudent.toString());
+			if (updatedStudent != null) {
+				System.out.println("Updated student: " + updatedStudent.toString());
+			}
 
 			// Fetch students by ID
-			Student result = findStudent(studentDAO, 155);
+			Student result = findStudent(studentDAO, 10);
 			if (result != null) {
 				System.out.println("***** Found the following student with id: 100 *****");
 				System.out.println(result.toString());
@@ -62,12 +64,12 @@ public class PaulDiracApplication {
 				updateStudent(studentDAO, result);
 			}
 
-			// Delete student with id=160
-			deleteStudentByStudentID(studentDAO, 160);
+			// Delete student with id=1
+			deleteStudentByStudentID(studentDAO, 1);
 
 			// Delete all Bradleys
-			int numberOfRowsDeleted = deleteAllStudentsWithLastName(studentDAO, "Bradley");
-			System.out.println("Deleted " + numberOfRowsDeleted + " rows.");
+//			int numberOfRowsDeleted = deleteAllStudentsWithLastName(studentDAO, "Bradley");
+//			System.out.println("Deleted " + numberOfRowsDeleted + " rows.");
 		};
 	}
 

@@ -1,5 +1,4 @@
 package com.myprojects.pauldirac.entity;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -13,20 +12,21 @@ public class Student {
 
     @Column(name="first_name")
     private String firstName;
+    @Column(name="last_name")
+    private String lastName;
+    @Column(name="email")
+    private String email;
 
     public Student() {}
 
-    public Student(String firstName, String lastName, String email) {
+    public Student(
+            String firstName,
+            String lastName,
+            String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
     }
-
-    @Column(name="last_name")
-    private String lastName;
-
-    @Column(name="email")
-    private String email;
 
     public int getId() {
         return id;

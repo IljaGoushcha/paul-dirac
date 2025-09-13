@@ -58,8 +58,8 @@ public class StudentDAOImpl implements StudentDAO {
     @Transactional
     public Student updateLastNameById(int id, String lastName) {
         Student myStudent = entityManager.find(Student.class, id);
-        myStudent.setLastName(lastName);
         if (myStudent != null) {
+            myStudent.setLastName(lastName);
             entityManager.merge(myStudent);
         }
         return myStudent;
