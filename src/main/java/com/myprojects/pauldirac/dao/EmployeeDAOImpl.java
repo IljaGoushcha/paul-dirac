@@ -34,6 +34,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     @Override
     public Employee save(Employee theEmployee) {
+        // This 'merge' - if new creates record if existing just updates it
         Employee employee = entityManager.merge(theEmployee);
         return employee;
     }

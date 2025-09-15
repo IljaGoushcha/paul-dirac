@@ -3,6 +3,7 @@ package com.myprojects.pauldirac.service;
 import com.myprojects.pauldirac.dao.EmployeeDAO;
 import com.myprojects.pauldirac.entity.Employee;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    @Transactional
     public Employee save(Employee employee) {
         return employeeDAO.save(employee);
     }

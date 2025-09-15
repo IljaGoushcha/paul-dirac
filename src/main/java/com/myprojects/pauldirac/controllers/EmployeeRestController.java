@@ -33,8 +33,16 @@ public class EmployeeRestController {
 
     @PostMapping("/employees")
     public Employee addEmployee(@RequestBody Employee employee) {
+        // Just in case an actual ID was passed, this will force it to be recreated by DB
+        employee.setId(0);
         Employee newEmployee = employeeService.save(employee);
         return newEmployee;
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        Employee updatedEmployee = employeeService.save(employee);
+        return updatedEmployee;
     }
 
 }
