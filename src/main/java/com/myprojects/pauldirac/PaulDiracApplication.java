@@ -24,52 +24,6 @@ public class PaulDiracApplication {
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
 			System.out.println("Hello World.");
-
-			// Seed DB with students
-			createStudent(studentDAO);
-			createMultipleStudents(studentDAO);
-
-			// Finding all students
-			List<Student> allStudentsInDatabase = queryForStudents(studentDAO);
-			for (Student student : allStudentsInDatabase) {
-				System.out.println(student.toString());
-			}
-
-			// Find all Goushchas
-			List<Student> allGoushchaStudents = queryForStudentsWithLastName(studentDAO, "Goushcha");
-			for (Student student : allGoushchaStudents) {
-				System.out.println(student.toString());
-			}
-
-			// Change all last names to Bradley
-			int numberOfUpdatedRecords = setLastNameForAllStudents(studentDAO,"Bradley");
-			System.out.println("Number of entries updated to last name Bradley: " + numberOfUpdatedRecords);
-
-			// Change user with id 155 last name to MacFarlane
-			Student updatedStudent = updateStudentLastName(studentDAO,158, "MacFarlane");
-			if (updatedStudent != null) {
-				System.out.println("Updated student: " + updatedStudent.toString());
-			}
-
-			// Fetch students by ID
-			Student result = findStudent(studentDAO, 10);
-			if (result != null) {
-				System.out.println("***** Found the following student with id: 100 *****");
-				System.out.println(result.toString());
-				System.out.println("***** This is how update should look un DB *****");
-				result.setFirstName("Hang");
-				result.setLastName("Pham");
-				result.setEmail("hang.pham@gmail.com.");
-				System.out.println(result.toString());
-				updateStudent(studentDAO, result);
-			}
-
-			// Delete student with id=1
-			deleteStudentByStudentID(studentDAO, 1);
-
-			// Delete all Bradleys
-//			int numberOfRowsDeleted = deleteAllStudentsWithLastName(studentDAO, "Bradley");
-//			System.out.println("Deleted " + numberOfRowsDeleted + " rows.");
 		};
 	}
 
