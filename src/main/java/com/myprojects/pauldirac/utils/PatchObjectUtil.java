@@ -2,6 +2,7 @@ package com.myprojects.pauldirac.utils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.myprojects.pauldirac.entity.Attorney;
 import com.myprojects.pauldirac.entity.Employee;
 import org.springframework.stereotype.Component;
 
@@ -23,5 +24,14 @@ public class PatchObjectUtil {
 
         tempEmployeeNode.setAll(patchPayloadNode);
         return objectMapper.convertValue(tempEmployeeNode, Employee.class);
+    }
+
+    public Attorney applyForAttorneys(Map<String, Object> patchPayload, Attorney tempAttorney) {
+
+        ObjectNode patchPayloadNode = objectMapper.convertValue(patchPayload, ObjectNode.class);
+        ObjectNode tempAttorneyNode = objectMapper.convertValue(tempAttorney, ObjectNode.class);
+
+        tempAttorneyNode.setAll(patchPayloadNode);
+        return objectMapper.convertValue(tempAttorneyNode, Attorney.class);
     }
 }
