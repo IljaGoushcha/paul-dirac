@@ -19,12 +19,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Read endpoints
                         .requestMatchers(HttpMethod.GET, "/api/employees/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/cars/**").authenticated()
                         // Allow preflight (see section 3)
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Writes require auth (or switch to permitAll while testing)
                         .requestMatchers(HttpMethod.POST, "/api/employees/**").authenticated()
                         //.requestMatchers(HttpMethod.GET,"/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
-                        .anyRequest().permitAll()
+                        //.anyRequest().permitAll()
                 )
                 // Pick one auth mechanism you actually use:
                 .httpBasic(Customizer.withDefaults()) // dev/basic
