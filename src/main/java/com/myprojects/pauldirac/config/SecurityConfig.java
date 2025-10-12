@@ -23,6 +23,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // Writes require auth (or switch to permitAll while testing)
                         .requestMatchers(HttpMethod.POST, "/api/employees/**").authenticated()
+                        //.requestMatchers(HttpMethod.GET,"/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()
                         .anyRequest().permitAll()
                 )
                 // Pick one auth mechanism you actually use:
